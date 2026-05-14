@@ -151,6 +151,61 @@
         font-size: 18px;
       }
     }
+
+    .contact-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.contact-box{
+  padding:20px;
+  border-radius:18px;
+  background:#f8fafc;
+  border:1px solid rgba(148,163,184,0.25);
+}
+
+.contact-label{
+  font-size:14px;
+  font-weight:700;
+  color:#64748b;
+  margin-bottom:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.contact-value{
+  font-size:15px;
+  color:#0f172a;
+  margin-bottom:14px;
+  word-break:break-word;
+}
+
+.copy-btn{
+  border:none;
+  background:#1d4ed8;
+  color:white;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  transition:0.25s;
+}
+
+.copy-btn:hover{
+  background:#1e40af;
+}
+
+.linkedin-link{
+  color:#1d4ed8;
+  text-decoration:none;
+  font-weight:700;
+  word-break:break-word;
+}
+
+.linkedin-link:hover{
+  color:#1e40af;
+}
   </style>
 </head>
 
@@ -176,14 +231,83 @@
     </div>
 
     <section class="contacts">
-      <p class="contacts-title">Contacts</p>
 
-      <div class="contact-links">
-        <a href="mailto:giuseppe.stillavato@tiscali.it">Email</a>
-        <a href="tel:+393458576456">Phone</a>
-        <a href="www.linkedin.com/in/giuseppe-stillavato-705a76205" target="_blank">LinkedIn</a>
+  <p class="contacts-title">Contacts</p>
+
+  <div class="contact-container">
+
+    <!-- EMAIL -->
+
+    <div class="contact-box">
+
+      <div class="contact-label">Email</div>
+
+      <div class="contact-value" id="emailText">
+        giuseppe.stillavato@tiscali.it
       </div>
+
+      <button class="copy-btn"
+        onclick="copyText('emailText', this)">
+        Copy
+      </button>
+
+    </div>
+
+    <!-- PHONE -->
+
+    <div class="contact-box">
+
+      <div class="contact-label">Phone</div>
+
+      <div class="contact-value" id="phoneText">
+        +39 345 857 6456
+      </div>
+
+      <button class="copy-btn"
+        onclick="copyText('phoneText', this)">
+        Copy
+      </button>
+
+    </div>
+
+    <!-- LINKEDIN -->
+
+    <div class="contact-box">
+
+      <div class="contact-label">LinkedIn</div>
+
+      <a class="linkedin-link"
+        href="https://www.linkedin.com/in/giuseppe-stillavato-705a76205"
+        target="_blank">
+
+        linkedin.com/in/giuseppe-stillavato
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
     </section>
   </main>
+  <script>
+
+function copyText(id, button){
+
+  const text =
+    document.getElementById(id).innerText;
+
+  navigator.clipboard.writeText(text);
+
+  button.innerText = "Copied!";
+
+  setTimeout(() => {
+    button.innerText = "Copy";
+  }, 1500);
+
+}
+
+</script>
 </body>
 </html>
